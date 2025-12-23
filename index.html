@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENZIANE ZAKARYA | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sora': ['Sora', 'sans-serif'],
+                        'mono': ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        'dark': {
+                            900: '#09090b',
+                            800: '#0f0f12',
+                            700: '#18181b',
+                            600: '#27272a',
+                        },
+                        'accent': {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                        },
+                        'secondary': {
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(16, 185, 129, 0.5)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background-color: #09090b;
+            color: #e4e4e7;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 3px;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #34d399 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Background grid - subtle dots */
+        .bg-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Glowing orbs - more subtle */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.25;
+            pointer-events: none;
+            transition: all 2s ease;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #10b981;
+            top: -150px;
+            right: -150px;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: #8b5cf6;
+            bottom: 10%;
+            left: -150px;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: #10b981;
+            top: 60%;
+            right: 5%;
+            opacity: 0.15;
+        }
+
+        /* Card hover effect - cleaner */
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Skill badge */
+        .skill-badge {
+            transition: all 0.2s ease;
+        }
+
+        .skill-badge:hover {
+            background: rgba(16, 185, 129, 0.1) !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+            transform: scale(1.05);
+        }
+
+        /* Nav link underline */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #10b981;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% - 14px);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.5), transparent);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered reveal */
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Typing animation */
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #10b981;
+            animation: typing 2s steps(17) forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            50% { border-color: transparent; }
+        }
+
+        /* Cursor blink */
+        .cursor {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Smooth line animation */
+        .line-grow {
+            width: 0;
+            animation: lineGrow 1s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes lineGrow {
+            to { width: 80px; }
+        }
+
+        /* Button glow effect */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        /* Floating animation for cards */
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .float-card {
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        .float-card:nth-child(2) { animation-delay: 0.5s; }
+        .float-card:nth-child(3) { animation-delay: 1s; }
+        .float-card:nth-child(4) { animation-delay: 1.5s; }
+
+        /* Counter animation */
+        .counter {
+            display: inline-block;
+        }
+
+        /* Print styles for CV */
+        @media print {
+            body {
+                background: white !important;
+            }
+            nav, footer, .orb, #about, #skills, #projects, #experience, #education, #contact, 
+            .reveal button, .text-center.mt-8, header {
+                display: none !important;
+            }
+            #cv {
+                padding: 0 !important;
+                background: white !important;
+            }
+            #cv-content {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            #cv .text-center.mb-12 {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark-900 bg-grid min-h-screen">
+    <!-- Background orbs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-900/70 backdrop-blur-xl border-b border-zinc-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-accent-500 flex items-center justify-center font-bold text-dark-900 text-sm">
+                        ZB
+                    </div>
+                    <span class="font-medium text-zinc-300 hidden sm:block">Zakarya</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#about" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors px-4 py-2">À propos</a>
+                    <a href="#skills" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors px-4 py-2">Compétences</a>
+                    <a href="#projects" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors px-4 py-2">Projets</a>
+                    <a href="#experience" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors px-4 py-2">Expériences</a>
+                    <a href="#cv" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors px-4 py-2">CV</a>
+                    <a href="#contact" class="ml-4 px-5 py-2 bg-accent-500 hover:bg-accent-600 rounded-lg text-sm font-medium transition-all text-dark-900">Contact</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="menu-btn" class="md:hidden p-2 text-zinc-400 hover:text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="mobile-menu fixed top-16 right-0 bottom-0 w-72 bg-dark-900/98 backdrop-blur-xl border-l border-zinc-800/50 md:hidden">
+            <div class="flex flex-col p-6 space-y-2">
+                <a href="#about" class="text-zinc-300 hover:text-accent-400 transition-colors py-3 px-4 rounded-lg hover:bg-zinc-800/50">À propos</a>
+                <a href="#skills" class="text-zinc-300 hover:text-accent-400 transition-colors py-3 px-4 rounded-lg hover:bg-zinc-800/50">Compétences</a>
+                <a href="#projects" class="text-zinc-300 hover:text-accent-400 transition-colors py-3 px-4 rounded-lg hover:bg-zinc-800/50">Projets</a>
+                <a href="#experience" class="text-zinc-300 hover:text-accent-400 transition-colors py-3 px-4 rounded-lg hover:bg-zinc-800/50">Expériences</a>
+                <a href="#cv" class="text-zinc-300 hover:text-accent-400 transition-colors py-3 px-4 rounded-lg hover:bg-zinc-800/50 flex items-center gap-2">
+                    <i class="fas fa-file-alt"></i>Mon CV
+                </a>
+                <div class="pt-4 mt-4 border-t border-zinc-800">
+                    <a href="#contact" class="block px-4 py-3 bg-accent-500 hover:bg-accent-600 rounded-xl text-sm font-medium text-center text-dark-900 transition-all">Me contacter</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center px-4 pt-16">
+        <div class="text-center max-w-4xl mx-auto">
+            <!-- Greeting -->
+            <p class="text-accent-400 font-mono text-sm mb-4 animate-fade-in tracking-wider">
+                <span class="inline-block w-8 h-px bg-accent-500 mr-3 align-middle line-grow"></span>
+                Bienvenue sur mon portfolio
+            </p>
+
+            <!-- Name with typing effect -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-2 animate-slide-up" style="animation-delay: 0.2s;">
+                <span class="text-white">Je suis</span>
+            </h1>
+            <h2 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6" style="animation-delay: 0.3s;">
+                <span id="typed-name" class="gradient-text"></span>
+                <span class="typing-cursor text-accent-400">|</span>
+            </h2>
+
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-full mb-8 animate-fade-in" style="animation-delay: 0.5s;">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+                </span>
+                <span class="text-sm text-zinc-300 font-medium">Disponible pour un stage • Janvier - Mars 2026</span>
+            </div>
+
+            <!-- Title -->
+            <p class="text-lg sm:text-xl text-zinc-400 mb-10 animate-slide-up max-w-2xl mx-auto leading-relaxed" style="animation-delay: 0.6s;">
+                Étudiant en <span class="text-accent-400 font-medium">BUT Informatique</span> passionné par le développement 
+                et les nouvelles technologies.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.7s;">
+                <a href="#contact" class="group btn-glow px-8 py-3.5 bg-accent-500 hover:bg-accent-600 rounded-xl font-medium transition-all flex items-center gap-2 text-dark-900">
+                    Me contacter
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#about" class="px-8 py-3.5 border border-zinc-700 rounded-xl font-medium hover:border-accent-500/50 hover:bg-accent-500/5 transition-all flex items-center gap-2">
+                    <i class="fas fa-user text-accent-400"></i>
+                    En savoir plus
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <div class="flex flex-col items-center gap-2 text-zinc-500">
+                <span class="text-xs tracking-widest uppercase">Scroll</span>
+                <div class="w-5 h-8 border-2 border-zinc-600 rounded-full flex justify-center pt-1">
+                    <div class="w-1 h-2 bg-accent-500 rounded-full animate-bounce"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal grid md:grid-cols-2 gap-12 items-center">
+                <!-- Image/Avatar placeholder -->
+                <div class="relative">
+                    <div class="aspect-square max-w-md mx-auto rounded-2xl bg-gradient-to-br from-dark-700 to-dark-800 border border-white/5 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-accent-500/20 to-cyan-500/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent-500 to-cyan-500 flex items-center justify-center">
+                                    <span class="text-5xl font-bold">ZB</span>
+                                </div>
+                                <p class="text-gray-400 font-mono text-sm">Étudiant en Informatique</p>
+                            </div>
+
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute top-4 right-4 w-20 h-20 border border-accent-500/30 rounded-lg"></div>
+                        <div class="absolute bottom-4 left-4 w-16 h-16 border border-cyan-500/30 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div>
+                    <h2 class="text-sm font-mono text-accent-400 mb-2">&lt;À propos/&gt;</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold mb-6">
+                        Passionné par le <span class="gradient-text">développement</span>
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Curieux et motivé, j'aime relever des défis techniques et transformer des idées en solutions concrètes. 
+                        Ma formation m'a permis d'acquérir des bases solides en programmation, réseaux et bases de données, 
+                        que j'ai pu appliquer lors de projets variés.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Je recherche actuellement une opportunité de stage de 8 semaines (janvier à mars 2026) pour 
+                        découvrir le monde professionnel et apporter ma motivation au sein d'une équipe. 
+                        Basé à Amiens, je suis mobile et prêt à m'investir pleinement.
+                    </p>
+
+                    <!-- Quick stats -->
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-dark-700/50 rounded-xl border border-white/5">
+                            <div class="text-2xl font-bold gradient-text">2+</div>
+                            <div class="text-xs text-gray-500 mt-1">Années d'études</div>
+                        </div>
+                        <div class="text-center p-4 bg-dark-700/50 rounded-xl border border-white/5">
+                            <div class="text-2xl font-bold gradient-text">3</div>
+                            <div class="text-xs text-gray-500 mt-1">Projets réalisés</div>
+                        </div>
+                        <div class="text-center p-4 bg-dark-700/50 rounded-xl border border-white/5">
+                            <div class="text-2xl font-bold gradient-text">B1</div>
+                            <div class="text-xs text-gray-500 mt-1">Anglais</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="relative py-24 px-4 bg-dark-800/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-mono text-accent-400 mb-2">&lt;Compétences/&gt;</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold">Mon arsenal <span class="gradient-text">technique</span></h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Développement -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5" style="animation-delay: 0.1s;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-4">Développement</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">C</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">Python</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">HTML</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">Java</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">C++</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">API</span>
+                    </div>
+                </div>
+
+                <!-- Données & Cloud -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5" style="animation-delay: 0.2s;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-4">Données & Cloud</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">MySQL</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">Cloud</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">CI/CD</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">GitHub Actions</span>
+                    </div>
+                </div>
+
+                <!-- Réseaux & Sécurité -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5" style="animation-delay: 0.3s;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-halved text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-4">Réseaux & Sécurité</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">Modèle OSI</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">TCP/IP</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">VLAN</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">Routage</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">DNS</span>
+                    </div>
+                </div>
+
+                <!-- Outils -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5" style="animation-delay: 0.4s;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center mb-4">
+                        <i class="fas fa-tools text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-4">Outils</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">VSCode</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">GitHub</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">Linux</span>
+                        <span class="skill-badge px-3 py-1 bg-dark-600 rounded-full text-sm text-gray-300 border border-white/5">Figma</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft skills -->
+            <div class="mt-12 reveal">
+                <div class="bg-gradient-to-r from-accent-500/10 to-cyan-500/10 rounded-2xl p-6 border border-white/5">
+                    <h4 class="text-lg font-semibold mb-4 text-center">Mes atouts au quotidien</h4>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 bg-dark-700/50 rounded-full text-sm text-gray-300 border border-accent-500/20">
+                            <i class="fas fa-users-gear mr-2 text-accent-400"></i>Gestion de projet Agile
+                        </span>
+                        <span class="px-4 py-2 bg-dark-700/50 rounded-full text-sm text-gray-300 border border-cyan-500/20">
+                            <i class="fas fa-people-group mr-2 text-cyan-400"></i>Esprit d'équipe
+                        </span>
+                        <span class="px-4 py-2 bg-dark-700/50 rounded-full text-sm text-gray-300 border border-purple-500/20">
+                            <i class="fas fa-magnifying-glass-chart mr-2 text-purple-400"></i>Écoute & Analyse
+                        </span>
+                        <span class="px-4 py-2 bg-dark-700/50 rounded-full text-sm text-gray-300 border border-emerald-500/20">
+                            <i class="fas fa-presentation-screen mr-2 text-emerald-400"></i>Communication claire
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-mono text-accent-400 mb-2">&lt;Projets/&gt;</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold">Mes <span class="gradient-text">réalisations</span></h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Projet Covoiturage -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl border border-white/5 overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-accent-500/20 to-cyan-500/20 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-car-side text-6xl text-accent-400/50 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-500/30">
+                                <i class="fas fa-spinner fa-spin mr-1"></i>En cours
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">UniRide - Covoiturage Étudiant</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Application de covoiturage conçue pour les étudiants afin de faciliter leurs trajets quotidiens. 
+                            Mise en relation entre conducteurs et passagers pour optimiser les déplacements.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-accent-400 border border-accent-500/20">Application Web</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-cyan-400 border border-cyan-500/20">Base de données</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-purple-400 border border-purple-500/20">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Convertisseur IP -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl border border-white/5 overflow-hidden group" style="animation-delay: 0.1s;">
+                    <div class="h-48 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-network-wired text-6xl text-cyan-400/50 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-accent-500/20 text-accent-400 rounded-full text-xs font-medium border border-accent-500/30">
+                                <i class="fas fa-check mr-1"></i>Terminé
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">IP Calculator</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Application de calcul réseau permettant de convertir des adresses IP en binaire, 
+                            calculer le masque de sous-réseau, l'adresse réseau et l'adresse de broadcast.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-cyan-400 border border-cyan-500/20">Réseaux</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-emerald-400 border border-emerald-500/20">Conversion binaire</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-orange-400 border border-orange-500/20">IPv4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Jeu -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl border border-white/5 overflow-hidden group" style="animation-delay: 0.2s;">
+                    <div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-gamepad text-6xl text-purple-400/50 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-accent-500/20 text-accent-400 rounded-full text-xs font-medium border border-accent-500/30">
+                                <i class="fas fa-check mr-1"></i>Terminé
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Projet Jeu Vidéo</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Création d'un jeu vidéo dans le cadre de ma première année de BUT Informatique. 
+                            Développement de la logique de jeu, des graphismes et de l'interaction utilisateur.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-purple-400 border border-purple-500/20">Game Dev</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-pink-400 border border-pink-500/20">Projet BUT1</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-yellow-400 border border-yellow-500/20">IHM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="relative py-24 px-4 bg-dark-800/30">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-mono text-accent-400 mb-2">&lt;Expériences/&gt;</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold">Mon <span class="gradient-text">parcours</span> professionnel</h3>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Amazon -->
+                <div class="reveal timeline-item">
+                    <div class="card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5 ml-4">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold">Amazon</h4>
+                                <p class="text-accent-400 font-mono text-sm">Agent Logistique</p>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm border border-green-500/20">
+                                2025 - En cours
+                            </span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Au cœur d'un entrepôt à haute cadence, j'ai appris à optimiser chaque geste et à collaborer 
+                            efficacement avec mes collègues. Cette expérience m'a appris la rigueur, la gestion du stress 
+                            et l'importance de la coordination dans un environnement exigeant.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Organisation</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Efficacité</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Civique -->
+                <div class="reveal timeline-item" style="animation-delay: 0.1s;">
+                    <div class="card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5 ml-4">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold">Service Civique</h4>
+                                <p class="text-cyan-400 font-mono text-sm">Animateur Jeunesse</p>
+                            </div>
+                            <span class="px-3 py-1 bg-dark-600 text-gray-400 rounded-full text-sm border border-white/10">
+                                Été 2024
+                            </span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Une expérience enrichissante au contact des plus jeunes ! J'ai eu la chance d'imaginer et 
+                            d'animer des ateliers créatifs tout en transmettant des valeurs de partage et de respect. 
+                            Cela m'a permis de développer ma patience et mon sens des responsabilités.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Créativité</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Leadership</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Patience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- McDonald's -->
+                <div class="reveal timeline-item" style="animation-delay: 0.2s;">
+                    <div class="card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5 ml-4">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold">McDonald's</h4>
+                                <p class="text-purple-400 font-mono text-sm">Équipier Polyvalent</p>
+                            </div>
+                            <span class="px-3 py-1 bg-dark-600 text-gray-400 rounded-full text-sm border border-white/10">
+                                2022 - 2023
+                            </span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Ma première expérience professionnelle où j'ai appris à gérer la pression des rushs, 
+                            à m'adapter rapidement aux différents postes et à toujours garder le sourire face aux clients. 
+                            Une vraie école de la réactivité !
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Adaptabilité</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Réactivité</span>
+                            <span class="px-2 py-1 bg-dark-600 rounded text-xs text-gray-400">Relation client</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="relative py-24 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-mono text-accent-400 mb-2">&lt;Formation/&gt;</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold">Mon <span class="gradient-text">parcours</span> académique</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- BUT Informatique -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-500/10 to-transparent rounded-bl-full"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-cyan-500 flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-xl"></i>
+                            </div>
+                            <span class="px-3 py-1 bg-accent-500/10 text-accent-400 rounded-full text-sm border border-accent-500/20">
+                                2023 - 2025
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">BUT Informatique</h4>
+                        <p class="text-cyan-400 font-mono text-sm mb-3">UPJV - IUT Amiens</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Spécialisation en déploiement d'applications communicantes et sécurisées. 
+                            Une formation complète qui mêle code, infrastructure réseau et cybersécurité.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Baccalauréat -->
+                <div class="reveal card-hover bg-dark-700/50 rounded-2xl p-6 border border-white/5 relative overflow-hidden" style="animation-delay: 0.1s;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-transparent rounded-bl-full"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                <i class="fas fa-award text-xl"></i>
+                            </div>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm border border-purple-500/20">
+                                2020 - 2023
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">Baccalauréat Général</h4>
+                        <p class="text-purple-400 font-mono text-sm mb-3">Lycée Marie Curie</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Double spécialité scientifique : Maths et Physique-Chimie. 
+                            Obtenu avec <span class="text-emerald-400 font-medium">Mention Bien</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="cv" class="relative py-24 px-4 bg-dark-800/30">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-sm font-mono text-accent-400 mb-2">&lt;Curriculum Vitae/&gt;</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold">Mon <span class="gradient-text">CV</span> complet</h3>
+                <p class="text-gray-400 mt-4">Version interactive de mon curriculum vitae</p>
+            </div>
+
+            <!-- CV Container -->
+            <div class="reveal bg-white text-gray-900 rounded-2xl shadow-2xl overflow-hidden print:shadow-none" id="cv-content">
+                <!-- CV Header -->
+                <div class="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-8 text-center">
+                    <h1 class="text-4xl font-bold tracking-wider mb-3">BENZIANE ZAKARYA</h1>
+                    <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-300 mb-3">
+                        <span><i class="fas fa-phone mr-1"></i>07 45 00 86 66</span>
+                        <span><i class="fas fa-envelope mr-1"></i>zakb60180@gmail.com</span>
+                        <span><i class="fas fa-calendar mr-1"></i>24/12/2005</span>
+                        <span><i class="fas fa-car mr-1"></i>Permis B</span>
+                    </div>
+                    <a href="https://www.linkedin.com/in/zakarya-benziane" target="_blank" class="text-cyan-400 hover:text-cyan-300 text-sm">
+                        <i class="fab fa-linkedin mr-1"></i>linkedin.com/in/zakarya-benziane
+                    </a>
+                    <div class="mt-4">
+                        <span class="inline-block px-4 py-1 bg-cyan-500 text-white rounded-full text-sm font-medium">
+                            Recherche d'un stage
+                        </span>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <!-- Profil -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-bold text-gray-900 border-b-2 border-gray-900 pb-2 mb-4">PROFIL</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Étudiant en 2ème année de BUT Informatique, je suis à la recherche d'un stage non rémunéré de 8 semaines 
+                            (du 19 janvier au 13 mars 2026) pour mettre mes compétences techniques au service d'une équipe dynamique. 
+                            Rigoureux et polyvalent, j'ai à cœur de m'investir dans des projets concrets et de contribuer à la performance 
+                            de votre système d'information. Habitant l'agglomération, je suis immédiatement mobile et opérationnel.
+                        </p>
+                    </div>
+
+                    <!-- Compétences -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-bold text-gray-900 border-b-2 border-gray-900 pb-2 mb-4">COMPÉTENCES</h2>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span><strong>Langages :</strong> C, Python, HTML, Java, C++, API, IHM</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span><strong>Base de données :</strong> MySQL, notions de Cloud, Déploiement web, CI/CD (GitHub Actions), BDD</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span><strong>Outils :</strong> VSCode, GitHub, Trello, Canva, Figma, Google Workspace, Microsoft Office, Linux</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span><strong>Réseaux :</strong> Cisco Packet Tracer, Modèle OSI, Protocoles TCP/IP, IPv4/IPv6, VLAN, Routage statique, DHCP, DNS, NAT, Sécurité réseaux</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span>Développement application, conception web, programmation orientée objet, création d'interfaces et intégration d'API.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span>Gestion et administration de bases de données, hébergement cloud.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span>Méthode agile, travail en équipe, analyse des besoins, présentation de livrables.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-gray-400 mt-1">•</span>
+                                        <span>Sensibilisation sécurité, gestion des accès, protection des données, notions de cryptographie.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formation -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-bold text-gray-900 border-b-2 border-gray-900 pb-2 mb-4">FORMATION</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-gray-900">UPJV-IUT Amiens</h3>
+                                    <p class="text-gray-700">2ème année en Informatique Parcours Déploiement d'applications communicantes et sécurisées</p>
+                                </div>
+                                <span class="text-gray-500 text-sm whitespace-nowrap ml-4">2023 - 2025</span>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-gray-900">Baccalauréat Général</h3>
+                                    <p class="text-gray-700">Spécialité Mathématiques/Physique-Chimie <span class="text-emerald-600 font-medium">Mention Bien</span> - Lycée Marie Curie</p>
+                                </div>
+                                <span class="text-gray-500 text-sm whitespace-nowrap ml-4">2020 - 2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expériences Professionnelles -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-bold text-gray-900 border-b-2 border-gray-900 pb-2 mb-4">EXPÉRIENCES PROFESSIONNELLES</h2>
+                        <ul class="space-y-3 text-gray-700 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-gray-400 mt-1">•</span>
+                                <span><strong>Amazon (2025 - En cours)</strong> - Logistique : gestion des flux, respect des délais et travail en équipe dans des environnements dynamiques et exigeants.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-gray-400 mt-1">•</span>
+                                <span><strong>Service Civique (Juillet - Août 2024)</strong> - Animation jeunesse : encadrement d'enfants, organisation d'activités ludiques et pédagogiques, sensibilisation au vivre-ensemble.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-gray-400 mt-1">•</span>
+                                <span><strong>McDonalds (2022 / 2023)</strong> - Employé Polyvalent : accueil client, préparation et service rapide, gestion des commandes et maintien des standards de qualité et d'hygiène.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Langues & Centres d'intérêt -->
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900 border-b-2 border-gray-900 pb-2 mb-4">LANGUES</h2>
+                            <div class="flex gap-8 text-gray-700">
+                                <span><strong>Anglais</strong> - B1</span>
+                                <span><strong>Espagnol</strong> - B1</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900 border-b-2 border-gray-900 pb-2 mb-4">CENTRES D'INTÉRÊT</h2>
+                            <ul class="text-gray-700 text-sm space-y-1">
+                                <li class="flex items-center gap-2">
+                                    <i class="fas fa-dumbbell text-gray-400"></i>
+                                    Musculation en salle
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fas fa-film text-gray-400"></i>
+                                    Cinéma (Thriller)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Print Button -->
+            <div class="text-center mt-8 reveal">
+                <button onclick="window.print()" class="px-8 py-3 bg-gradient-to-r from-accent-500 to-cyan-500 rounded-full font-medium hover:shadow-lg hover:shadow-accent-500/25 transition-all inline-flex items-center gap-2">
+                    <i class="fas fa-print"></i>
+                    Imprimer / Télécharger en PDF
+                </button>
+                <p class="text-gray-500 text-sm mt-2">Utilisez Ctrl+P ou le bouton pour sauvegarder en PDF</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-mono text-accent-400 mb-2">&lt;Contact/&gt;</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold">Travaillons <span class="gradient-text">ensemble</span></h3>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">
+                    Mon profil vous intéresse ? Je serais ravi d'échanger avec vous sur une opportunité de stage 
+                    ou tout autre projet. Contactez-moi, je réponds rapidement !
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Email -->
+                <a href="mailto:zakb60180@gmail.com" class="reveal card-hover group bg-dark-700/50 rounded-2xl p-6 border border-white/5 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Email</h4>
+                        <p class="text-gray-400 text-sm">zakb60180@gmail.com</p>
+                    </div>
+                    <i class="fas fa-arrow-right ml-auto text-gray-500 group-hover:text-accent-400 group-hover:translate-x-1 transition-all"></i>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/zakarya-benziane" target="_blank" rel="noopener noreferrer" class="reveal card-hover group bg-dark-700/50 rounded-2xl p-6 border border-white/5 flex items-center gap-4" style="animation-delay: 0.1s;">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fab fa-linkedin-in text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">LinkedIn</h4>
+                        <p class="text-gray-400 text-sm">zakarya-benziane</p>
+                    </div>
+                    <i class="fas fa-arrow-right ml-auto text-gray-500 group-hover:text-accent-400 group-hover:translate-x-1 transition-all"></i>
+                </a>
+
+                <!-- Phone -->
+                <a href="tel:+33745008666" class="reveal card-hover group bg-dark-700/50 rounded-2xl p-6 border border-white/5 flex items-center gap-4" style="animation-delay: 0.2s;">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Téléphone</h4>
+                        <p class="text-gray-400 text-sm">07 45 00 86 66</p>
+                    </div>
+                    <i class="fas fa-arrow-right ml-auto text-gray-500 group-hover:text-accent-400 group-hover:translate-x-1 transition-all"></i>
+                </a>
+
+                <!-- Location -->
+                <div class="reveal card-hover group bg-dark-700/50 rounded-2xl p-6 border border-white/5 flex items-center gap-4" style="animation-delay: 0.3s;">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                        <i class="fas fa-location-dot text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Localisation</h4>
+                        <p class="text-gray-400 text-sm">Amiens, France</p>
+                    </div>
+                    <span class="ml-auto px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs border border-green-500/20">
+                        <i class="fas fa-car mr-1"></i>Permis B
+                    </span>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="reveal mt-12 text-center">
+                <div class="inline-flex flex-col sm:flex-row items-center gap-6 p-8 bg-zinc-800/30 rounded-2xl border border-zinc-700/50">
+                    <div class="text-left">
+                        <p class="font-semibold text-lg">Prêt à collaborer ?</p>
+                        <p class="text-sm text-zinc-400">Stage disponible • Janvier à Mars 2026</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="#cv" class="px-6 py-3 bg-zinc-700/50 border border-zinc-600/50 rounded-xl font-medium hover:bg-zinc-700 transition-all whitespace-nowrap flex items-center justify-center gap-2">
+                            <i class="fas fa-file-alt text-accent-400"></i>Mon CV
+                        </a>
+                        <a href="mailto:zakb60180@gmail.com" class="btn-glow px-6 py-3 bg-accent-500 hover:bg-accent-600 rounded-xl font-medium transition-all whitespace-nowrap text-dark-900">
+                            <i class="fas fa-paper-plane mr-2"></i>Me contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-12 px-4 border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-accent-500 flex items-center justify-center font-bold text-dark-900">
+                        ZB
+                    </div>
+                    <div>
+                        <p class="font-medium">Zakarya Benziane</p>
+                        <p class="text-xs text-zinc-500">Étudiant en Informatique</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="mailto:zakb60180@gmail.com" class="w-10 h-10 rounded-xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-accent-400 hover:border-accent-500/50 transition-all">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/zakarya-benziane" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-accent-400 hover:border-accent-500/50 transition-all">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-accent-400 hover:border-accent-500/50 transition-all">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-zinc-800/50 text-center">
+                <p class="text-xs text-zinc-500">© 2025 Zakarya Benziane. Conçu avec <span class="text-accent-400">♥</span> à Amiens</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Typing animation for name
+        const typedName = document.getElementById('typed-name');
+        const names = ['ZAKARYA BENZIANE', 'Développeur', 'Étudiant IT'];
+        let nameIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeEffect() {
+            const currentName = names[nameIndex];
+            
+            if (isDeleting) {
+                typedName.textContent = currentName.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typedName.textContent = currentName.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentName.length) {
+                isDeleting = true;
+                typingSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                nameIndex = (nameIndex + 1) % names.length;
+                typingSpeed = 500; // Pause before next word
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        // Start typing animation
+        setTimeout(typeEffect, 1000);
+
+        // Cursor blink animation
+        const cursor = document.querySelector('.typing-cursor');
+        if (cursor) {
+            setInterval(() => {
+                cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+            }, 530);
+        }
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
+            });
+        });
+
+        // Scroll reveal animation with stagger
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach((el, index) => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 80) {
+                    setTimeout(() => {
+                        el.classList.add('active');
+                    }, index * 50);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-dark-900/95');
+            } else {
+                nav.classList.remove('bg-dark-900/95');
+            }
+        });
+
+        // Parallax effect for orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
