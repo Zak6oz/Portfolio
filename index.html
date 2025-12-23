@@ -37,9 +37,9 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slide-up': 'slideUp 0.6s ease-out forwards',
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.35s ease-out forwards',
+                        'fade-in': 'fadeIn 0.4s ease-out forwards',
+                        'scale-in': 'scaleIn 0.3s ease-out forwards',
                     },
                     keyframes: {
                         float: {
@@ -218,11 +218,11 @@
             display: none;
         }
 
-        /* Reveal animation */
+        /* Reveal animation - FAST */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(15px);
+            transition: all 0.3s ease-out;
         }
 
         .reveal.active {
@@ -230,11 +230,11 @@
             transform: translateY(0);
         }
 
-        /* Staggered reveal */
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
+        /* Staggered reveal - reduced delays */
+        .reveal-delay-1 { transition-delay: 0.05s; }
+        .reveal-delay-2 { transition-delay: 0.1s; }
+        .reveal-delay-3 { transition-delay: 0.15s; }
+        .reveal-delay-4 { transition-delay: 0.2s; }
 
         /* Mobile menu */
         .mobile-menu {
@@ -246,13 +246,13 @@
             transform: translateX(0);
         }
 
-        /* Typing animation */
+        /* Typing animation - FASTER */
         .typing-text {
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid #10b981;
-            animation: typing 2s steps(17) forwards, blink-caret 0.75s step-end infinite;
+            animation: typing 1s steps(17) forwards, blink-caret 0.5s step-end infinite;
         }
 
         @keyframes typing {
@@ -266,18 +266,18 @@
 
         /* Cursor blink */
         .cursor {
-            animation: blink 1s step-end infinite;
+            animation: blink 0.7s step-end infinite;
         }
 
         @keyframes blink {
             50% { opacity: 0; }
         }
 
-        /* Smooth line animation */
+        /* Smooth line animation - FASTER */
         .line-grow {
             width: 0;
-            animation: lineGrow 1s ease forwards;
-            animation-delay: 0.5s;
+            animation: lineGrow 0.4s ease forwards;
+            animation-delay: 0.2s;
         }
 
         @keyframes lineGrow {
@@ -411,16 +411,16 @@
             </p>
 
             <!-- Name with typing effect -->
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-2 animate-slide-up" style="animation-delay: 0.2s;">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-2 animate-slide-up" style="animation-delay: 0.1s;">
                 <span class="text-white">Je suis</span>
             </h1>
-            <h2 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6" style="animation-delay: 0.3s;">
+            <h2 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6" style="animation-delay: 0.15s;">
                 <span id="typed-name" class="gradient-text"></span>
                 <span class="typing-cursor text-accent-400">|</span>
             </h2>
 
             <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-full mb-8 animate-fade-in" style="animation-delay: 0.5s;">
+            <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-full mb-8 animate-fade-in" style="animation-delay: 0.2s;">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
@@ -429,13 +429,13 @@
             </div>
 
             <!-- Title -->
-            <p class="text-lg sm:text-xl text-zinc-400 mb-10 animate-slide-up max-w-2xl mx-auto leading-relaxed" style="animation-delay: 0.6s;">
+            <p class="text-lg sm:text-xl text-zinc-400 mb-10 animate-slide-up max-w-2xl mx-auto leading-relaxed" style="animation-delay: 0.25s;">
                 Étudiant en <span class="text-accent-400 font-medium">BUT Informatique</span> passionné par le développement 
                 et les nouvelles technologies.
             </p>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.7s;">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.3s;">
                 <a href="#contact" class="group btn-glow px-8 py-3.5 bg-accent-500 hover:bg-accent-600 rounded-xl font-medium transition-all flex items-center gap-2 text-dark-900">
                     Me contacter
                     <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
@@ -495,7 +495,7 @@
                     <p class="text-gray-400 leading-relaxed mb-8">
                         Je recherche actuellement une opportunité de stage de 8 semaines (janvier à mars 2026) pour 
                         découvrir le monde professionnel et apporter ma motivation au sein d'une équipe. 
-                        Basé à Amiens, je suis mobile et prêt à m'investir pleinement.
+                        Basé à Nogent-sur-Oise, je suis mobile et prêt à m'investir pleinement.
                     </p>
 
                     <!-- Quick stats -->
@@ -1063,7 +1063,7 @@
                     </div>
                     <div>
                         <h4 class="font-semibold mb-1">Localisation</h4>
-                        <p class="text-gray-400 text-sm">Amiens, France</p>
+                        <p class="text-gray-400 text-sm">Nogent-sur-Oise, France</p>
                     </div>
                     <span class="ml-auto px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs border border-green-500/20">
                         <i class="fas fa-car mr-1"></i>Permis B
@@ -1117,19 +1117,19 @@
                 </div>
             </div>
             <div class="mt-8 pt-6 border-t border-zinc-800/50 text-center">
-                <p class="text-xs text-zinc-500">© 2025 Zakarya Benziane. Conçu avec <span class="text-accent-400">♥</span> à Amiens</p>
+                <p class="text-xs text-zinc-500">© 2025 Zakarya Benziane. Conçu avec <span class="text-accent-400">♥</span></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Typing animation for name
+        // Typing animation for name - FASTER
         const typedName = document.getElementById('typed-name');
         const names = ['ZAKARYA BENZIANE', 'Développeur', 'Étudiant IT'];
         let nameIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        let typingSpeed = 100;
+        let typingSpeed = 60;
 
         function typeEffect() {
             const currentName = names[nameIndex];
@@ -1137,27 +1137,27 @@
             if (isDeleting) {
                 typedName.textContent = currentName.substring(0, charIndex - 1);
                 charIndex--;
-                typingSpeed = 50;
+                typingSpeed = 30;
             } else {
                 typedName.textContent = currentName.substring(0, charIndex + 1);
                 charIndex++;
-                typingSpeed = 100;
+                typingSpeed = 60;
             }
 
             if (!isDeleting && charIndex === currentName.length) {
                 isDeleting = true;
-                typingSpeed = 2000; // Pause at end
+                typingSpeed = 1500; // Pause at end
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 nameIndex = (nameIndex + 1) % names.length;
-                typingSpeed = 500; // Pause before next word
+                typingSpeed = 300; // Pause before next word
             }
 
             setTimeout(typeEffect, typingSpeed);
         }
 
         // Start typing animation
-        setTimeout(typeEffect, 1000);
+        setTimeout(typeEffect, 400);
 
         // Cursor blink animation
         const cursor = document.querySelector('.typing-cursor');
@@ -1188,7 +1188,7 @@
             });
         });
 
-        // Scroll reveal animation with stagger
+        // Scroll reveal animation with stagger - FAST
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealOnScroll = () => {
@@ -1196,10 +1196,10 @@
                 const elementTop = el.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
                 
-                if (elementTop < windowHeight - 80) {
+                if (elementTop < windowHeight - 50) {
                     setTimeout(() => {
                         el.classList.add('active');
-                    }, index * 50);
+                    }, index * 20);
                 }
             });
         };
